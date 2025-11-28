@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>OTP Email</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+
+    <div class="otp-card" style="
+        max-width: 500px;
+        background: #ffffff;
+        margin: 50px auto;
+        padding: 30px 25px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    ">
+        <h1 style="
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.5;
+        ">
+            Hello 
+            <span class="highlight" th:text='${name}' style="color: #4A90E2; font-weight: bold;"></span>, 
+            <br><br>
+            Your OTP is 
+            <span class="highlight" th:text='${otp}' style="
+                color: #D9534F;
+                font-weight: bold;
+                background: #ffeaea;
+                padding: 6px 14px;
+                border-radius: 6px;
+                display: inline-block;
+                font-size: 24px;
+                margin-top: 10px;
+            "></span>
+        </h1>
+    </div>
+
+</body>
+</html>
