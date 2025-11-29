@@ -22,7 +22,6 @@ public class EmailHelper {
         try {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
 
-            // IMPORTANT FIX – must be your Gmail ID
             helper.setFrom("harishsiva1703@gmail.com", "Book-My-Ticket");
 
             helper.setTo(email);
@@ -39,7 +38,7 @@ public class EmailHelper {
 
         } catch (Exception e) {
             System.err.println("====== OTP SEND ERROR ======");
-            e.printStackTrace();   // <-- SHOW FULL ERROR
+            e.printStackTrace();
         }
     }
 }

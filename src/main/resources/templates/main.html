@@ -4,190 +4,362 @@
 <meta charset="UTF-8">
 <title>Book My Ticket</title>
 
-<!-- Bootstrap -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 <style>
 body {
-	background: #f5f6fa;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f5f5f5;
+    overflow-x: hidden;
 }
 
+/* ================= NAVBAR ================= */
+.navbar {
+    background: #111 !important;
+    padding: 14px 32px;
+}
 .navbar-brand {
-	font-weight: bold;
-	font-size: 1.6rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ff2e2e !important;
 }
 
-.hero {
-	background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-		url('/images/hero-bg.jpg') center/cover no-repeat;
-	padding: 130px 0;
-	color: #fff;
-	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+/* ===================== HERO SLIDER ===================== */
+.slider-container {
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.8));
+    backdrop-filter: blur(18px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.slider-content {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+}
+
+/* LEFT BLOCK */
+.text-block {
+    max-width: 520px;
+    animation: fadeInLeft .8s ease;
+}
+.text-block h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin: 0;
+    color: #1c1c1c;
+}
+.text-meta {
+    margin: 14px 0;
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 500;
+}
+.book-btn {
+    padding: 14px 34px;
+    background: #111;
+    color: #fff;
+    border-radius: 40px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.book-btn:hover {
+    background: #000;
+}
+
+/* RIGHT POSTER */
+.poster {
+    width: 380px;
+    height: 520px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.22);
+    animation: fadeInRight .8s ease;
+}
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ARROWS */
+.arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.85);
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    font-size: 1.3rem;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+.left-arrow { left: 22px; }
+.right-arrow { right: 22px; }
+.arrow-btn:hover {
+    background: #fff;
+}
+
+/* DOTS */
+.dots {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    gap: 10px;
+}
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.dot.active {
+    width: 26px;
+    border-radius: 10px;
+    background: #111;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* ================= MOVIES GRID ================= */
+.movie-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e1e1e1;
+    transition: .25s ease;
+}
+.movie-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 38px rgba(0,0,0,0.2);
+}
 .movie-card img {
-	height: 260px;
-	object-fit: cover;
-	border-radius: 5px 5px 0 0;
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+}
+.movie-card h5 {
+    font-weight: 700;
+    margin: 10px 0 5px;
+}
+.movie-card .btn {
+    background: #ff2e2e;
+    border: none;
+    font-weight: 600;
+}
+.movie-card .btn:hover {
+    background: #e30000;
 }
 
+/* ================= FOOTER ================= */
 footer {
-	background: #111;
-	color: #aaa;
-	padding: 15px 0;
-	margin-top: 60px;
+    background: #111;
+    color: #ccc;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
 }
+
 </style>
 </head>
 
 <body>
 
-	<!-- NAVBAR -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-4">
-		<a class="navbar-brand" href="/">🎬 BookMyTicket</a>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <a class="navbar-brand" href="/">
+        <i class="bi bi-film"></i> BookMyTicket
+    </a>
 
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-			data-bs-target="#navMenu">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-		<div id="navMenu" class="collapse navbar-collapse justify-content-end">
+    <div id="navMenu" class="collapse navbar-collapse justify-content-end">
+        <div th:if="${session.user == null}">
+            <a href="/login" class="btn btn-outline-light me-2">Login</a>
+            <a href="/register" class="btn btn-danger">Register</a>
+        </div>
 
-			<!-- NOT LOGGED IN -->
-			<div th:if="${session.user == null}">
-				<a href="/login" class="btn btn-outline-light me-2">Login</a> <a
-					href="/register" class="btn btn-warning">Register</a>
-			</div>
+        <div th:if="${session.user != null}" class="d-flex align-items-center">
+            <span class="text-white me-3" th:text="'Hello, ' + ${session.user.name}"></span>
+            <a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+</nav>
 
-			<!-- LOGGED IN -->
-			<div th:if="${session.user != null}"
-				class="d-flex align-items-center">
-				<span class="text-white me-3"
-					th:text="'Hello, ' + ${session.user.name}"></span> <a
-					href="/logout" class="btn btn-danger">Logout</a>
-			</div>
+<!-- ================= HERO SLIDER ================= -->
+<div class="slider-container">
 
-		</div>
-	</nav>
+    <div class="arrow-btn left-arrow" onclick="prevSlide()">
+        <i class="bi bi-chevron-left"></i>
+    </div>
 
+    <div class="slider-content" id="slide">
 
-	<!-- TOASTS (INCLUDED DIRECTLY — NO FRAGMENTS) -->
-	<div aria-live="polite" aria-atomic="true" class="position-relative">
-		<div class="toast-container position-fixed top-0 end-0 p-3">
+        <div class="text-block" id="leftText">
+            <h1 id="movieTitle">Andhra King Taluka</h1>
+            <div class="text-meta" id="movieMeta">UA13+ • Drama, Romance</div>
+            <button class="book-btn">Book now</button>
+        </div>
 
-			<!-- SUCCESS -->
-			<div th:if="${pass}" class="toast text-white bg-success border-0">
-				<div class="toast-header bg-success text-white">
-					<strong class="me-auto">Success</strong>
-					<button class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
-				</div>
-				<div class="toast-body" th:text="${pass}"></div>
-			</div>
+        <div class="poster" id="moviePoster">
+            <img id="posterImg" src="https://via.placeholder.com/400x500?text=Movie+Poster">
+        </div>
 
-			<!-- ERROR -->
-			<div th:if="${fail}" class="toast text-white bg-danger border-0">
-				<div class="toast-header bg-danger text-white">
-					<strong class="me-auto">Error</strong>
-					<button class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
-				</div>
-				<div class="toast-body" th:text="${fail}"></div>
-			</div>
+    </div>
 
-		</div>
-	</div>
+    <div class="arrow-btn right-arrow" onclick="nextSlide()">
+        <i class="bi bi-chevron-right"></i>
+    </div>
 
+    <div class="dots" id="dots"></div>
 
-	<!-- HERO SECTION -->
-	<section class="hero text-center">
-		<div class="container">
-			<h1 class="display-4 fw-bold">Your Favorite Movies Are Here</h1>
-			<p class="lead mt-3">Book tickets instantly — Fast • Secure •
-				Simple</p>
-			<a href="#movies" class="btn btn-warning btn-lg mt-3 px-4">Browse
-				Movies</a>
-		</div>
-	</section>
+</div>
 
+<!-- ================= MOVIES SECTION ================= -->
+<section class="container py-5">
+    <h2 class="text-center fw-bold mb-4">Now Showing</h2>
 
-	<!-- MOVIES SECTION -->
-	<section class="container py-5" id="movies">
-		<h2 class="text-center fw-bold mb-4">Now Showing</h2>
+    <div class="row g-4">
 
-		<div class="row g-4">
+        <div class="col-md-3 col-sm-6">
+            <div class="movie-card card">
+                <img src="https://wallpapercat.com/w/full/2/0/7/119844-3840x2160-desktop-4k-avengers-background.jpg">
+                <div class="card-body">
+                    <h5>Avengers: Endgame</h5>
+                    <p class="text-muted small">Action • 3h 1m</p>
+                    <a class="btn btn-danger w-100">Book Now</a>
+                </div>
+            </div>
+        </div>
 
-			<!-- MOVIE 1 -->
-			<div class="col-md-3 col-sm-6">
-				<div class="card movie-card shadow border-0">
-					<img src="https://via.placeholder.com/300x260?text=Movie+1"
-						class="card-img-top">
-					<div class="card-body">
-						<h5 class="card-title">Avengers: Endgame</h5>
-						<p class="text-muted small">Action • 3h 1m</p>
-						<a href="#" class="btn btn-primary w-100">Book Now</a>
-					</div>
-				</div>
-			</div>
+        <div class="col-md-3 col-sm-6">
+            <div class="movie-card card">
+                <img src="https://via.placeholder.com/300x300?text=Movie+2">
+                <div class="card-body">
+                    <h5>Interstellar</h5>
+                    <p class="text-muted small">Sci-Fi • 2h 49m</p>
+                    <a class="btn btn-danger w-100">Book Now</a>
+                </div>
+            </div>
+        </div>
 
-			<!-- MOVIE 2 -->
-			<div class="col-md-3 col-sm-6">
-				<div class="card movie-card shadow border-0">
-					<img src="https://via.placeholder.com/300x260?text=Movie+2"
-						class="card-img-top">
-					<div class="card-body">
-						<h5 class="card-title">Interstellar</h5>
-						<p class="text-muted small">Sci-Fi • 2h 49m</p>
-						<a href="#" class="btn btn-primary w-100">Book Now</a>
-					</div>
-				</div>
-			</div>
+        <div class="col-md-3 col-sm-6">
+            <div class="movie-card card">
+                <img src="https://via.placeholder.com/300x300?text=Movie+3">
+                <div class="card-body">
+                    <h5>Inception</h5>
+                    <p class="text-muted small">Thriller • 2h 28m</p>
+                    <a class="btn btn-danger w-100">Book Now</a>
+                </div>
+            </div>
+        </div>
 
-			<!-- MOVIE 3 -->
-			<div class="col-md-3 col-sm-6">
-				<div class="card movie-card shadow border-0">
-					<img src="https://via.placeholder.com/300x260?text=Movie+3"
-						class="card-img-top">
-					<div class="card-body">
-						<h5 class="card-title">Inception</h5>
-						<p class="text-muted small">Thriller • 2h 28m</p>
-						<a href="#" class="btn btn-primary w-100">Book Now</a>
-					</div>
-				</div>
-			</div>
+        <div class="col-md-3 col-sm-6">
+            <div class="movie-card card">
+                <img src="https://via.placeholder.com/300x300?text=Movie+4">
+                <div class="card-body">
+                    <h5>Joker</h5>
+                    <p class="text-muted small">Drama • 2h 2m</p>
+                    <a class="btn btn-danger w-100">Book Now</a>
+                </div>
+            </div>
+        </div>
 
-			<!-- MOVIE 4 -->
-			<div class="col-md-3 col-sm-6">
-				<div class="card movie-card shadow border-0">
-					<img src="https://via.placeholder.com/300x260?text=Movie+4"
-						class="card-img-top">
-					<div class="card-body">
-						<h5 class="card-title">Joker</h5>
-						<p class="text-muted small">Drama • 2h 2m</p>
-						<a href="#" class="btn btn-primary w-100">Book Now</a>
-					</div>
-				</div>
-			</div>
+    </div>
+</section>
 
-		</div>
-	</section>
+<!-- ================= FOOTER ================= -->
+<footer>
+    © 2025 BookMyTicket — All Rights Reserved
+</footer>
 
+<!-- ================= JS SLIDER ================= -->
+<script>
+const slides = [
+	{
+	    title: "Stranger Things - Season 5",
+	    meta: "UA16+ • Sci-Fi, Thriller",
+	    poster: "https://m.media-amazon.com/images/I/81wV1r82R1L.jpg"
+	},
 
-	<!-- FOOTER -->
-	<footer class="text-center">
-		<p class="mb-0">© 2025 BookMyTicket — All Rights Reserved</p>
-	</footer>
+    {
+        title: "Interstellar",
+        meta: "U • Sci-Fi, Space Adventure",
+        poster: "https://m.media-amazon.com/images/I/91vIHsL-zjL.jpg"
+    },
+    {
+        title: "Joker",
+        meta: "A • Crime, Drama",
+        poster: "https://assets-in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/joker-folie-a-deux-et00352820-1730374353.jpg"
+    }
+];
 
+let index = 0;
 
-	<!-- Bootstrap JS -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+function updateSlide() {
+    document.getElementById("movieTitle").innerText = slides[index].title;
+    document.getElementById("movieMeta").innerText = slides[index].meta;
+    document.getElementById("posterImg").src = slides[index].poster;
+    updateDots();
+}
 
-	<!-- Auto-show toasts -->
-	<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll('.toast').forEach(t => new bootstrap.Toast(t).show());
+function nextSlide() {
+    index = (index + 1) % slides.length;
+    updateSlide();
+}
+
+function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlide();
+}
+
+function initDots() {
+    const dots = document.getElementById("dots");
+    slides.forEach((_, i) => {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        dot.onclick = () => { index = i; updateSlide(); };
+        dots.appendChild(dot);
     });
+}
+
+function updateDots() {
+    document.querySelectorAll(".dot").forEach((d, i) => {
+        d.classList.toggle("active", i === index);
+    });
+}
+
+initDots();
+updateSlide();
 </script>
 
 </body>
