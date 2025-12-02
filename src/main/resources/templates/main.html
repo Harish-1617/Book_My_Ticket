@@ -4,17 +4,14 @@
 <meta charset="UTF-8">
 <title>Book My Ticket</title>
 
-<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 <style>
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #f5f5f5;
+    background: #ffffff;
     overflow-x: hidden;
 }
 
@@ -34,8 +31,7 @@ body {
     width: 100%;
     height: 80vh;
     overflow: hidden;
-    background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.8));
-    backdrop-filter: blur(18px);
+    background: linear-gradient(135deg, #ffffff, #ffe5e5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,15 +65,16 @@ body {
 }
 .book-btn {
     padding: 14px 34px;
-    background: #111;
+    background: linear-gradient(135deg, #ff3b3b, #c60000);
     color: #fff;
     border-radius: 40px;
     border: none;
     font-size: 1rem;
     font-weight: 600;
+    transition: .25s;
 }
 .book-btn:hover {
-    background: #000;
+    transform: scale(1.05);
 }
 
 /* RIGHT POSTER */
@@ -100,7 +97,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.9);
     border-radius: 50%;
     width: 46px;
     height: 46px;
@@ -108,7 +105,7 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(4px);
     font-size: 1.3rem;
     box-shadow: 0 5px 12px rgba(0,0,0,0.15);
 }
@@ -128,14 +125,14 @@ body {
 .dot {
     width: 10px;
     height: 10px;
-    background: #bbb;
+    background: #aaa;
     border-radius: 50%;
     cursor: pointer;
 }
 .dot.active {
     width: 26px;
     border-radius: 10px;
-    background: #111;
+    background: #ff2e2e;
 }
 
 /* Animations */
@@ -150,15 +147,15 @@ body {
 
 /* ================= MOVIES GRID ================= */
 .movie-card {
-    background: #fff;
+    background: linear-gradient(135deg, #ffffff, #ffe6e6);
     border-radius: 10px;
     overflow: hidden;
-    border: 1px solid #e1e1e1;
+    border: 1px solid #ffcccc;
     transition: .25s ease;
 }
 .movie-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 15px 38px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 38px rgba(0,0,0,0.18);
 }
 .movie-card img {
     height: 280px;
@@ -170,12 +167,12 @@ body {
     margin: 10px 0 5px;
 }
 .movie-card .btn {
-    background: #ff2e2e;
+    background: linear-gradient(135deg, #ff3b3b, #c60000);
     border: none;
     font-weight: 600;
 }
 .movie-card .btn:hover {
-    background: #e30000;
+    background: linear-gradient(135deg, #ff1a1a, #a00000);
 }
 
 /* ================= FOOTER ================= */
@@ -230,7 +227,7 @@ footer {
             <button class="book-btn">Book now</button>
         </div>
 
-        <div class="poster" id="moviePoster">
+        <div class="poster">
             <img id="posterImg" src="https://via.placeholder.com/400x500?text=Movie+Poster">
         </div>
 
@@ -256,40 +253,40 @@ footer {
                 <div class="card-body">
                     <h5>Avengers: Endgame</h5>
                     <p class="text-muted small">Action • 3h 1m</p>
-                    <a class="btn btn-danger w-100">Book Now</a>
+                    <a class="btn w-100">Book Now</a>
                 </div>
             </div>
         </div>
 
         <div class="col-md-3 col-sm-6">
             <div class="movie-card card">
-                <img src="https://via.placeholder.com/300x300?text=Movie+2">
+                <img src="https://wallpapercave.com/wp/wp1817968.jpg">
                 <div class="card-body">
                     <h5>Interstellar</h5>
                     <p class="text-muted small">Sci-Fi • 2h 49m</p>
-                    <a class="btn btn-danger w-100">Book Now</a>
+                    <a class="btn w-100">Book Now</a>
                 </div>
             </div>
         </div>
 
         <div class="col-md-3 col-sm-6">
             <div class="movie-card card">
-                <img src="https://via.placeholder.com/300x300?text=Movie+3">
+                <img src="https://wallpaperaccess.com/full/1264685.jpg">
                 <div class="card-body">
                     <h5>Inception</h5>
                     <p class="text-muted small">Thriller • 2h 28m</p>
-                    <a class="btn btn-danger w-100">Book Now</a>
+                    <a class="btn w-100">Book Now</a>
                 </div>
             </div>
         </div>
 
         <div class="col-md-3 col-sm-6">
             <div class="movie-card card">
-                <img src="https://via.placeholder.com/300x300?text=Movie+4">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Joker_(2019_film)_poster.jpg/250px-Joker_(2019_film)_poster.jpg">
                 <div class="card-body">
                     <h5>Joker</h5>
                     <p class="text-muted small">Drama • 2h 2m</p>
-                    <a class="btn btn-danger w-100">Book Now</a>
+                    <a class="btn w-100">Book Now</a>
                 </div>
             </div>
         </div>
@@ -310,7 +307,6 @@ const slides = [
 	    meta: "UA16+ • Sci-Fi, Thriller",
 	    poster: "https://m.media-amazon.com/images/I/81wV1r82R1L.jpg"
 	},
-
     {
         title: "Interstellar",
         meta: "U • Sci-Fi, Space Adventure",
@@ -360,6 +356,12 @@ function updateDots() {
 
 initDots();
 updateSlide();
+
+/* >>> AUTO SLIDE EVERY 5 SECONDS <<< */
+setInterval(() => {
+    nextSlide();
+}, 5000);
+
 </script>
 
 </body>

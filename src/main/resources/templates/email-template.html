@@ -1,42 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>OTP Email</title>
-</head>
-<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+<title>OTP Verification</title>
 
-    <div class="otp-card" style="
-        max-width: 500px;
-        background: #ffffff;
-        margin: 50px auto;
-        padding: 30px 25px;
-        border-radius: 12px;
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    ">
-        <h1 style="
-            font-size: 22px;
-            font-weight: 600;
-            color: #333;
-            line-height: 1.5;
-        ">
-            Hello 
-            <span class="highlight" th:text='${name}' style="color: #4A90E2; font-weight: bold;"></span>, 
-            <br><br>
-            Your OTP is 
-            <span class="highlight" th:text='${otp}' style="
-                color: #D9534F;
-                font-weight: bold;
-                background: #ffeaea;
-                padding: 6px 14px;
-                border-radius: 6px;
-                display: inline-block;
-                font-size: 24px;
-                margin-top: 10px;
-            "></span>
-        </h1>
-    </div>
+<style>
+/* EMAIL RESET */
+body, table, td, div, p {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+/* DARK BACKGROUND */
+body {
+	background: #0c0c0c;
+	padding: 25px;
+}
+
+/* CARD */
+.email-card {
+	max-width: 480px;
+	margin: 25px auto;
+	background: #1a1a1d;
+	border-radius: 14px;
+	border: 1px solid #2b2b2b;
+	padding: 35px 40px;
+	box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
+}
+
+/* TITLE */
+.title {
+	font-size: 24px;
+	font-weight: bold;
+	color: #ff3333;
+	text-align: center;
+	margin-bottom: 18px;
+	text-shadow: 0 0 8px rgba(255, 50, 50, 0.8);
+	letter-spacing: 1px;
+}
+
+/* OTP */
+.otp-code {
+	font-size: 36px;
+	font-weight: bold;
+	color: #ff4d4d;
+	text-align: center;
+	letter-spacing: 4px;
+	padding: 14px 0;
+	text-shadow: 0 0 12px rgba(255, 77, 77, 1),
+	             0 0 20px rgba(255, 0, 0, 0.7);
+}
+
+/* TEXT */
+.text {
+	font-size: 15px;
+	color: #cccccc;
+	line-height: 1.6;
+	text-align: center;
+	margin-bottom: 18px;
+}
+
+/* FOOTER */
+.footer {
+	margin-top: 20px;
+	font-size: 12px;
+	color: #666;
+	text-align: center;
+	border-top: 1px solid #2f2f2f;
+	padding-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+	<div class="email-card">
+
+		<div class="title">OTP VERIFICATION</div>
+
+		<p class="text">
+			Hello <strong th:text="${name}"></strong>, <br><br>
+			Your One-Time Password for verification is:
+		</p>
+
+		<div class="otp-code" th:text="${otp}"></div>
+
+		<p class="text">
+			This OTP is valid for the next <strong>2 minutes</strong>.<br>
+			Please do not share it with anyone.
+		</p>
+
+		<div class="footer">
+			© BookMyTicket — Secure Verification System
+		</div>
+
+	</div>
 
 </body>
 </html>
